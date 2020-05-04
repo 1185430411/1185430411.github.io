@@ -1,100 +1,146 @@
-# Material Theme for Jekyll!
-## DEMO: [code.liquidthink.net](http://www.code.liquidthink.net)
-#### created with React, Redux, React-Router and transpiled with Webpack.
-![travis-ci](https://api.travis-ci.org/InsidiousMind/material-bliss-jekyll-theme.svg?branch=master)
+# plainwhite
 
-Made with React and served statically and dynamically
+Simplistic jekyll portfolio-style theme for writers.
 
-### **in order to build:**
-#### for Production
+**Demo**: [thelehhman.com](https://thelehhman.com)
+
+![plainwhite theme preview](/screenshot.png)
+
+## Installation on Github Pages
+
+Add this line to your site's `_config.yml`:
+
+```yaml
+remote_theme: thelehhman/plainwhite-jekyll
 ```
-./build-prod.sh //for production build
+
+## Installation
+
+Add this line to your Jekyll site's `Gemfile`:
+
+```ruby
+gem "plainwhite"
 ```
 
-#### for Development:
-run both build-dev and npm run jekyll in different terminals
+And add this line to your Jekyll site's `_config.yml`:
+
+```yaml
+theme: plainwhite
 ```
-npm run jekyll // in one terminal
-./build-dev.sh //in another
+
+And then execute:
+
+    $ bundle
+
+Or install it yourself as:
+
+    $ gem install plainwhite
+
+## Usage
+
+The "plainwhite" key in \_config.yml is used to customize the theme data.
+
+```yaml
+plainwhite:
+  name: Adam Denisov
+  tagline: Developer. Designer
+  date_format: "%b %-d, %Y"
+
+  social_links:
+    twitter: thelehhman
+    github: thelehhman
+    linkedIn: in/thelehhman # format: locale/username
 ```
-### Features:
-- Two Themes: Light and Dark
-- Fully Responsive for most devices
-- Dynamic Fuzzy Search
-- Push-out Menu to save space and create focus for users
-- Dynamic Project Page in a masonry layout built
-- The pros of dynamic webpages matched with the awesomeness of static Jekyll
-- Optimized (99/100 on testmysite by google) with Jekyll Assets and Webpack
-- included RESTful-like API (with [jekyll-react plugin](https://github.com/InsidiousMind/Jekyll-React))
-- Static or Dynamic Pages with just a frontmatter option
-- MORE TO COME
 
-### Screen Shots
+**Updating Placeholder Image**
 
-Dark Theme
-![Dark Theme](http://i.imgur.com/GfFoLXS.png)
+The placeholder portfolio image can be replaced by the desired image by placing it as `assets/portfolio.png` in your jekyll website.
 
-Light Theme
-![Light Theme](http://i.imgur.com/cdIgtax.png)
+**Comments (Disqus)**
 
-Dark Theme with Push out menu active
-![Dark Theme Push Out](http://i.imgur.com/xsjkszO.png)
+Comments on posts can be enabled by specifying your disqus_shortname under plainwhite in `_config.yml`. For example,
 
-Project Page
-![Project Page](http://i.imgur.com/VnLqCpi.png)
+```yaml
+plainwhite:
+  disqus_shortname: games
+```
 
-Single Post
-![Post](http://i.imgur.com/AcZ8nNi.png)
+**Google Analytics**
 
+It can be enabled by specifying your analytics id under plainwhite in `_config.yml`
 
-## Site Layout
+```yaml
+plainwhite:
+  analytics_id: "< YOUR ID >"
+```
 
-`./react-dev/pages`
-- These are static Jekyll components being rendered with react
+**Sitemap**
 
-`./react-dev/helpers.js`
-- these are global helpers. Right now all that is included are the static routes of you're site. Put all your static routes there (in 'staticRoutes' array), you don't need the full route just the base after your url So for example, if my posts are static and are at
- `http://www.example.com/posts/this-is-a-post.html`
- you just need "/posts/"
- this makes the loading of some parts of the site seem almost 'instant', while preserving the SEO of your site since Google can crawl the static content
+It can be toggled by the following line to under plainwhite in `_config.yml`
 
-`./react-dev/components/menu_items.js`
+```yaml
+plainwhite:
+  sitemap: true
+```
 
-- This is where your menu items are rendered. If you want a new item, add an object to the Hashlist with it's corresponding path (from your root url) Javascript object. IE if it is:
+**Excerpts**
 
-`const menuItems = { Home: '/', About: '/about/', Projects: '/projects/' };`
-and you want another entry, "Coding", with a path '/coding/' from the root url the object should look something like this :
-`const menuItems = { Home: '/', About: '/about/', Projects: '/projects/', Coding: '/coding'};`
+Excerpts can be enabled by adding the following line to your `_config.yml`
 
+```yaml
+show_excerpts: true
+```
 
-`./react-dev/actions/index.js`
-- this is where the magic happens from the JSON our Jekyll plugins rendered ( Jekyll_pages_api and Jekyll-react)
-You're going to want to add your site url to the `ROOT_URL` variable
-EX:
-if your site is at `http://www.example.com` change
-`const ROOT_URL = 'http://test_domain.com:4000';`
-to
-`const ROOT_URL = 'http://example.com';`
+**Layouts**
 
+- Home
+- Page
+- Post
 
-### Site Config Variables:
-any site configuration that you want to let React use, put under 'react' in your `_config.yml`. This will be grabbed by the siteInfo action creator and put through it's corresponding reducer
+**Navigation**
 
-### TODO:
- - [x] create a jekyll plugin to output all [YML config] site data into JSON, in such a way which is importable to react and can be used to manage state
- - [x] [possible TODO, maybe redundant. ?] Rendered JS to HTML and outputted into a folder for Jekyll to take it. This allows us to use React components on `_layouts`
- - [x] create a Dynamic Search Function with Auto Fill
- - [x] Finish implementing Toggle Theme Switch
- - [ ] add useful important information to single-post post meta
- - [ ] make footer look better on mobile
- - [ ] Implement 'sliding' on mobile-touchA
- - [ ] make expanded search bar more responsive on mobile
- - [ ] create category pages
- - [ ] add pagination
- - [ ] Make different post 'types' (IE Fullsize page)
- - [ ] make it easier to use with Jekyll
- - [ ] Save theme in sites cookies
+Navigation can be enabled by adding the following line to your `_config.yml`
 
+```yaml
+plainwhite:
+  navigation:
+    - title: My Work
+      url: "/my-work"
+    - title: Resume
+      url: "/resume"
+```
 
-### Contribution
-Want to contribute? Found an issue? Jump right in! I welcome any help I can get, and will work with you to fix any issues.
+**Multiline tagline**
+
+Tagline can be multiline in this way
+
+```yaml
+plainwhite:
+  tagline: |
+  First Line. 
+
+  Second Line. 
+
+  Third Line.
+```
+
+## Contributing
+
+Bug reports and pull requests are welcome on GitHub at https://github.com/thelehhman/plainwhite-jekyll. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+
+## Development
+
+To set up your environment to develop this theme, run `bundle install`.
+
+Your theme is setup just like a normal Jekyll site! To test your theme, run `bundle exec jekyll serve` and open your browser at `http://localhost:4000`. This starts a Jekyll server using your theme. Add pages, documents, data, etc. like normal to test your theme's contents. As you make modifications to your theme and to your content, your site will regenerate and you should see the changes in the browser after a refresh, just like normal.
+
+When your theme is released, only the files in `_layouts`, `_includes`, `_sass` and `assets` tracked with Git will be bundled.
+To add a custom directory to your theme-gem, please edit the regexp in `plainwhite.gemspec` accordingly.
+
+## License
+
+The theme is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+
+## More themes
+
+- [Texture](https://github.com/thelehhman/texture)

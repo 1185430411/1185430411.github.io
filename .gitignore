@@ -1,12 +1,7 @@
-_site
+*.gem
+.bundle
 .sass-cache
-.jekyll-metadata
-.jshintrc
-public
-node_modules
-src/assets/javascripts/bundle.js
+_site
 Gemfile.lock
-src/.asset-cache
-webpack/npm-debug.log
-src/_assets/js/bundle.js
-.idea
+.DS_Store
+vendor
